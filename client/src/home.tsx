@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { renderCursors } from "./functions/renderCursors";
 import useWebSocket from "react-use-websocket";
 import throttle from "lodash.throttle";
+import { renderUsersList } from "./functions/renderUsersList";
 
 type Props = {
   username: string;
@@ -53,7 +54,13 @@ export default function Home({ username }: Props) {
   }, [sendJsonMessage]);
 
   if (lastJsonMessage) {
-    return <>{renderCursors(lastJsonMessage)}</>;
+    return (
+      <>
+        <h1>Bonjour, {username}</h1>
+        {renderCursors(lastJsonMessage)}
+        {renderUsersList(lastJsonMessage)}
+      </>
+    );
   }
   return <h1>Bonjour, {username}</h1>;
 }
