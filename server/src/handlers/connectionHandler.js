@@ -24,10 +24,6 @@ export default function handleConnection(connection, request) {
   addConnection(uuid, connection);
   addUser(uuid, username);
 
-  // Log des informations de connexion
-  console.log("connection", addConnection);
-  console.log("username", addUser);
-
   // Écoute les messages reçus et les événements de déconnexion pour chaque connexion
   connection.on("message", (message) => handleMessage(message, uuid));
   connection.on("close", () => handleClose(uuid));

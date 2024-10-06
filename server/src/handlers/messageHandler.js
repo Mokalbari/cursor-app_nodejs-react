@@ -8,7 +8,6 @@ export default function handleMessage(bytes, uuid) {
   // Conversion des bytes reçus en un objet JSON
   // Par défaut, NodeJS reçoit des bytes qu'il doit convertir en string puis parse en JSON pour être exploitable
   const message = JSON.parse(bytes.toString());
-  console.log(message);
 
   // Mise à jour de l'état de l'utilisateur correspondant à l'UUID reçu
   updateUserState(uuid, message);
